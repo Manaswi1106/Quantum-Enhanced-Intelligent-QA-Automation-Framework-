@@ -27,24 +27,39 @@ Database	SQLAlchemy, SQLite or PostgreSQL
 API documentation	FastAPI / Swagger UI
 
 
-Repository Structure
+
+## Repository Structure
+
+```text
 QC_Project/
 ├── QC-Web/
 │   ├── backend/
 │   │   ├── app/
-│   │   │   ├── ai/             # Gemini/OpenAI providers and AI test generation
+│   │   │   ├── ai/             # Gemini/OpenAI providers
 │   │   │   ├── api/            # FastAPI routes
-│   │   │   ├── database/       # SQLAlchemy models and DB configuration
-│   │   │   ├── optimizer/      # QUBO builder and QAOA optimizer
-│   │   │   ├── schemas/        # API request/response schemas
-│   │   │   ├── services/       # Test generation and supporting services
-│   │   │   └── test_engine/    # Website discovery and Playwright execution
+│   │   │   ├── database/       # Database models
+│   │   │   ├── optimizer/      # QUBO and QAOA optimizer
+│   │   │   ├── schemas/        # API schemas
+│   │   │   ├── services/       # Supporting services
+│   │   │   └── test_engine/    # Playwright execution
 │   │   └── requirements.txt
 │   └── frontend/
-│       └── src/                # React + TypeScript dashboard
-├── shopsphere/                 # Sample e-commerce application / test target
-├── test_qaoa_run.py            # QAOA UI test helper
-└── verify_visuals.py           # Dashboard visual verification helper
+│       └── src/                # React + TypeScript
+├── shopsphere/                 # Sample e-commerce application
+├── test_qaoa_run.py
+└── verify_visuals.py
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Python 3.10 or later
+- Node.js and npm
+- Git
+- Playwright Chromium browser
+- Gemini or OpenAI API key (optional)
+
 Getting Started
 Prerequisites
 - Python 3.10 or later
