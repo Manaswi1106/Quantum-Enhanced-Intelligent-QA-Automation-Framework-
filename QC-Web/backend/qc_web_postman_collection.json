@@ -1,0 +1,209 @@
+{
+  "info": {
+    "_postman_id": "7a35368a-9c76-47db-a517-e85499256952",
+    "name": "QC-Web V2 API",
+    "description": "Postman Collection for Quantum-Assisted Regression Testing Platform (QC-Web)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000/api",
+      "type": "string"
+    },
+    {
+      "key": "appId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "executionId",
+      "value": "1",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Reset Database",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/reset",
+          "host": ["{{baseUrl}}"],
+          "path": ["reset"]
+        }
+      }
+    },
+    {
+      "name": "2. Analyze Website",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"url\": \"http://localhost:5173\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/applications/analyze",
+          "host": ["{{baseUrl}}"],
+          "path": ["applications", "analyze"]
+        }
+      }
+    },
+    {
+      "name": "3. List Applications",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/applications",
+          "host": ["{{baseUrl}}"],
+          "path": ["applications"]
+        }
+      }
+    },
+    {
+      "name": "4. Get Application Details",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/applications/{{appId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["applications", "{{appId}}"]
+        }
+      }
+    },
+    {
+      "name": "5. Generate Test Cases",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"app_id\": {{appId}}\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/test-cases/generate",
+          "host": ["{{baseUrl}}"],
+          "path": ["test-cases", "generate"]
+        }
+      }
+    },
+    {
+      "name": "6. List Test Cases",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/test-cases?app_id={{appId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["test-cases"],
+          "query": [
+            { "key": "app_id", "value": "{{appId}}" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "7. Build QUBO Matrix",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"app_id\": {{appId}},\n  \"budget\": 5,\n  \"weights\": {\n    \"change_impact\": 0.3,\n    \"failure_rate\": 0.2,\n    \"coverage\": 0.2,\n    \"risk\": 0.2,\n    \"efficiency\": 0.1\n  }\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/optimization/qubo",
+          "host": ["{{baseUrl}}"],
+          "path": ["optimization", "qubo"]
+        }
+      }
+    },
+    {
+      "name": "8. Run QAOA Optimization",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"app_id\": {{appId}},\n  \"budget\": 5,\n  \"p\": 1,\n  \"shots\": 512,\n  \"weights\": {\n    \"change_impact\": 0.3,\n    \"failure_rate\": 0.2,\n    \"coverage\": 0.2,\n    \"risk\": 0.2,\n    \"efficiency\": 0.1\n  }\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/optimization/qaoa",
+          "host": ["{{baseUrl}}"],
+          "path": ["optimization", "qaoa"]
+        }
+      }
+    },
+    {
+      "name": "9. Execute Tests (All or QAOA-selected)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"app_id\": {{appId}}\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/tests/execute",
+          "host": ["{{baseUrl}}"],
+          "path": ["tests", "execute"]
+        }
+      }
+    },
+    {
+      "name": "10. Get Execution Status & Progress",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/executions/{{executionId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["executions", "{{executionId}}"]
+        }
+      }
+    },
+    {
+      "name": "11. Get Test History",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/history",
+          "host": ["{{baseUrl}}"],
+          "path": ["history"]
+        }
+      }
+    },
+    {
+      "name": "12. Get Regression Results",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/results?app_id={{appId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["results"],
+          "query": [
+            { "key": "app_id", "value": "{{appId}}" }
+          ]
+        }
+      }
+    }
+  ]
+}

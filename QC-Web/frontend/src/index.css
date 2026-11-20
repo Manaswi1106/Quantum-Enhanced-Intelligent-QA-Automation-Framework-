@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary: #0B0F19;
+  --color-bg-secondary: #0F172A;
+  --color-bg-surface: #1E293B;
+  --color-bg-card: rgba(17, 24, 39, 0.85);
+  --color-bg-card-hover: rgba(30, 41, 59, 0.9);
+  --color-bg-input: rgba(15, 23, 42, 0.8);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-light: rgba(255, 255, 255, 0.05);
+  --color-border-accent: #7C3AED;
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #64748B;
+  --color-accent: #7C3AED;
+  --color-accent-light: #8B5CF6;
+  --color-accent-dark: #6D28D9;
+  --color-accent-glow: rgba(124, 58, 237, 0.25);
+  --color-emerald-accent: #10B981;
+  --color-error: #F43F5E;
+  --color-error-light: rgba(244, 63, 94, 0.1);
+  --color-warning: #F59E0B;
+  --color-success: #10B981;
+  --color-info: #0284C7;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(124, 58, 237, 0.3) transparent;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
+  background-color: #0B0F19;
+  color: #F8FAFC;
+  -webkit-font-smoothing: antialiased;
+  background-image: 
+    radial-gradient(at 15% 15%, rgba(99, 102, 241, 0.12) 0px, transparent 60%),
+    radial-gradient(at 85% 85%, rgba(139, 92, 246, 0.10) 0px, transparent 60%),
+    radial-gradient(at 50% 50%, #0F172A 0px, #0B0F19 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+*:focus-visible {
+  outline: 2px solid #8B5CF6;
+  outline-offset: 2px;
+}
+
+/* Stable Midnight Glass Card */
+.card-porcelain,
+.glass-panel,
+.glass-card {
+  background: rgba(17, 24, 39, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.5);
+  border-radius: 24px;
+  color: #F8FAFC;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-porcelain:hover,
+.glass-card:hover {
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.6);
+}
+
+/* Deep Quantum Indigo/Violet Velvet Card */
+.card-velvet {
+  background: linear-gradient(165deg, rgba(30, 27, 75, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.55);
+  border-radius: 24px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-velvet:hover {
+  border-color: rgba(139, 92, 246, 0.45);
+}
+
+/* Pill Buttons */
+.btn-burgundy {
+  background: linear-gradient(135deg, #7C3AED 0%, #6366F1 100%);
+  color: #FFFFFF;
+  border-radius: 9999px;
+  font-weight: 600;
+  box-shadow: 0 8px 24px -4px rgba(124, 58, 237, 0.35);
+  transition: all 0.2s ease;
+}
+
+.btn-burgundy:hover {
+  background: linear-gradient(135deg, #6D28D9 0%, #4F46E5 100%);
+  box-shadow: 0 12px 28px -4px rgba(124, 58, 237, 0.5);
+}
+
+.btn-pill-outline {
+  background: rgba(255, 255, 255, 0.05);
+  color: #F8FAFC;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-pill-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+/* STABLE: No rotations, tilts, floating movements, or flying cards */
+.floating-tilt-1,
+.floating-tilt-2 {
+  transform: none !important;
+  transition: none !important;
+}
